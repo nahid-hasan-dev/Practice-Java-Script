@@ -30,8 +30,7 @@ var MyCurrentHomeAddress = "Panchagarh Rangpur" //pascal case
 var my_current_home_address = "Panchagarh Rangpur" 
 var my_current_home_address = "Panchagarh Rangpur" 
 
-// git config --global user.name "nahid-hasan-dev"
-// git config --global user.email "nahidhasanbd603@gmail."
+
 
 
 
