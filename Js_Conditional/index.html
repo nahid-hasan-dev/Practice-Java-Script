@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #36d1dc, #5b86e5);
+      margin: 0;
+    }
+    .bmi-box {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      padding: 30px;
+      width: 320px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #5b86e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #36d1dc;
+    }
+    #result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .status {
+      margin-top: 5px;
+      font-size: 16px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="bmi-box">
+    <h2>BMI Calculator</h2>
+    <input type="number" id="weight" placeholder="Enter weight (kg)">
+    <input type="number" id="height" placeholder="Enter height (cm)">
+    <button onclick="calculateBMI()">Calculate</button>
+    <div id="result"></div>
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    function calculateBMI() {
+      const weight = parseFloat(document.getElementById('weight').value);
+      const height = parseFloat(document.getElementById('height').value) / 100; // convert to meters
+
+      if (!weight || !height) {
+        document.getElementById('result').innerText = "⚠️ Please enter both fields!";
+        document.getElementById('status').innerText = "";
+        return;
+      }
+
+      const bmi = weight / (height * height);
+      document.getElementById('result').innerText = "Your BMI: " + bmi.toFixed(2);
+
+      let status = "";
+      if (bmi < 18.5) status = "Underweight 😕";
+      else if (bmi < 24.9) status = "Normal Weight 😊";
+      else if (bmi < 29.9) status = "Overweight 😐";
+      else status = "Obese 😟";
+
+      document.getElementById('status').innerText = "Status: " + status;
+    }
+  </script>
+</body>
+</html>
